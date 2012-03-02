@@ -628,4 +628,9 @@ Test.ignoreErrors = map(re.compile, [
 	"AdapterInfo..*",
 	"No memory leaks detected.",
 	"libGL: Can't open configuration file.*",
+	"----------------.*",
+	"driver for.*",
+	"loaded .*",
+	"This may hurt performance.*",
+	".*Unable to create direct context rendering for window.*"
 ])
