@@ -50,6 +50,10 @@ XVisualInfo *piglit_glx_visinfo;
 GLXContext piglit_glx_context;
 #endif
 
+enum piglit_result (*opencl_display)();
+enum piglit_result (*opencl_run_test)();
+void (*piglit_opencl_destroy)();
+
 static void
 display(void)
 {

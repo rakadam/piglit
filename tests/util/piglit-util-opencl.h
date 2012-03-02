@@ -12,8 +12,9 @@ void piglit_opencl_test_init(int argc, char **argv);
 
 extern const char* opencl_kernel_file;
 
-OPENCL_UTIL_NODEF enum piglit_result (*opencl_display)();
-OPENCL_UTIL_NODEF enum piglit_result (*opencl_run_test)();
+extern enum piglit_result (*opencl_display)();
+extern enum piglit_result (*opencl_run_test)();
+
 OPENCL_UTIL_NODEF const char* platform_name;
 
 OPENCL_UTIL_NODEF cl_context opencl_context;

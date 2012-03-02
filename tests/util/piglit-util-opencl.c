@@ -18,6 +18,8 @@ piglit_display()
   return opencl_run_test();
 }
 
+static void opencl_destroy();
+
 #define CASE_ERR(ec) case ec: return #ec;
 
 const char * err_string(cl_int error)
@@ -83,11 +85,14 @@ void do_ocl_assert(long long cond, const char* name, int line, const char* file)
   }
 }
 
+void piglit_opencl_init();
+
 void
 piglit_init(int argc, char **argv)
 {
   opencl_display = NULL;
   opencl_run_test = NULL;
+  piglit_opencl_destroy = &opencl_destroy;
   platform_name = "any";
   piglit_opencl_mode = PIGLIT_PURE_OPENCL;
   piglit_opencl_init();
@@ -196,7 +201,7 @@ void piglit_opencl_init()
   OCL_CHECK(clCreateKernelsInProgram(opencl_program, 10000, opencl_kernels, &opencl_kernels_num));
 }
 
-void piglit_opencl_destroy()
+static void opencl_destroy()
 {
   int i = 0;
   

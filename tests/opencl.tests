@@ -6,9 +6,22 @@ from framework.exectest import *
 
 def add_ocl_test(group, name):
   group[name] = PlainExecTest([name, '-auto'])
-  
+
+profile = TestProfile()
+
 opencl_sanity = Group()
   
- add_ocl_test(opencl_sanity, 'ocl-context')
- 
+add_ocl_test(opencl_sanity, 'ocl-context')
+add_ocl_test(opencl_sanity, 'ocl-allocate-global')
+add_ocl_test(opencl_sanity, 'ocl-transfer-global')
+add_ocl_test(opencl_sanity, 'ocl-write-global')
+add_ocl_test(opencl_sanity, 'ocl-readwrite-global')
+add_ocl_test(opencl_sanity, 'ocl-indexed-global')
+add_ocl_test(opencl_sanity, 'ocl-compare')
+add_ocl_test(opencl_sanity, 'ocl-branch')
+add_ocl_test(opencl_sanity, 'ocl-float-arithm')
+add_ocl_test(opencl_sanity, 'ocl-int-arithm')
+add_ocl_test(opencl_sanity, 'ocl-loop')
+
+
 profile.tests['opencl_sanity'] = opencl_sanity;

@@ -299,8 +299,7 @@ static const GLint PIGLIT_ATTRIB_TEX = 1;
  */
 extern enum piglit_opencl_mode_ {PIGLIT_NO_OPENCL, PIGLIT_PURE_OPENCL, PIGLIT_OPENCL_OPENGL} piglit_opencl_mode;
 extern enum piglit_result (*opencl_run_test)();
-void piglit_opencl_init(); ///< Initialize up to kernel objects everything
-void piglit_opencl_destroy();
+extern void (*piglit_opencl_destroy)();
 
 #ifdef __cplusplus
 } /* end extern "C" */
