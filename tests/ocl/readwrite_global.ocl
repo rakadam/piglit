@@ -1,4 +1,4 @@
 kernel void readwrite_global(global float* p)
 {
-  *p = *p+41;
+  *p = p[1]+41;
 }

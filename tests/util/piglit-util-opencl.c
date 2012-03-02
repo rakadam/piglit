@@ -195,7 +195,7 @@ void piglit_opencl_init()
   
   if (strlen(build_str))
   {
-    fprintf(stderr, "build log: %s\n", build_str);
+//    printf("build log: %s\n", build_str);
   }
   
   OCL_CHECK(err);
