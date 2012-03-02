@@ -1,0 +1,5 @@
+kernel void indexed_global(global float* p)
+{
+  p[0] += 100.0f;
+  p[1] += 200.0f;
+}

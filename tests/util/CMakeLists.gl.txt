@@ -45,6 +45,14 @@ add_library (piglitutil
 	${UTIL_SOURCES}
 )
 
+add_library (piglitutilocl
+  piglit-util-opencl.c
+)
+
+add_executable(oclembed
+  oclembed.c
+)
+
 if(UNIX)
 	target_link_libraries(piglitutil m)
 endif(UNIX)

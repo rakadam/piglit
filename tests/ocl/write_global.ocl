@@ -1,0 +1,4 @@
+kernel void write_global(global float* p)
+{
+  *p = 42;
+}

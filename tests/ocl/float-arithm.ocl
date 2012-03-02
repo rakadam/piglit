@@ -1,0 +1,9 @@
+kernel void comapre_global(global float* p)
+{
+  #define func(x, y) (x*x + x) / y + 1;
+  
+  p[8] = func(p[0], p[1]);
+  p[9] = func(p[2], p[3]);
+  p[10] = func(p[4], p[5]);
+  p[11] = func(p[6], p[7]);
+}

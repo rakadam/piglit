@@ -1,0 +1,14 @@
+import os
+import os.path as path
+
+from framework.core import *
+from framework.exectest import *
+
+def add_ocl_test(group, name):
+  group[name] = PlainExecTest([name, '-auto'])
+  
+opencl_sanity = Group()
+  
+ add_ocl_test(opencl_sanity, 'ocl-context')
+ 
+profile.tests['opencl_sanity'] = opencl_sanity;

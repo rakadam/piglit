@@ -1,0 +1,18 @@
+kernel void comapre_global(global int* p)
+{
+  int val = p[0];
+  
+  for (int i = 0; i < p[1]; i++)
+  {
+    if (val%2 == 0)
+    {
+      val = val / 2;
+    }
+    else
+    {
+      val = 3*val + 1;
+    }
+  }
+  
+  p[2] = val;
+}

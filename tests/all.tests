@@ -147,6 +147,8 @@ def add_fbo_rg(group, format):
 	name = "fbo-rg-" + format
 	group[name] = PlainExecTest(['fbo-rg', '-auto', format])
 
+execfile(testsDir + '/opencl.tests')
+
 fbo = Group()
 add_plain_test(fbo, 'fbo-1d')
 add_plain_test(fbo, 'fbo-3d')

@@ -10,6 +10,7 @@ add_subdirectory (asmparsertest)
 add_subdirectory (shaders)
 add_subdirectory (texturing)
 add_subdirectory (spec)
+add_subdirectory (ocl)
 
 if (TIFF_FOUND)
 	add_subdirectory (glean)

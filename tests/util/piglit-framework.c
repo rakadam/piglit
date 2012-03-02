@@ -296,13 +296,21 @@ int main(int argc, char *argv[])
 		piglit_framework_glut_init(argc, argv);
 
 	piglit_init(argc, argv);
-
-	if (piglit_use_fbo) {
+  
+	if (piglit_use_fbo && piglit_opencl_mode != PIGLIT_PURE_OPENCL) {
 		result = piglit_display();
 		piglit_framework_fbo_destroy();
-	} else {
+	} else if (piglit_opencl_mode != PIGLIT_PURE_OPENCL) {
 		glutMainLoop();
+	} else {
+		assert(opencl_run_test);
+		result = opencl_run_test();
 	}
+	
+  if (piglit_opencl_mode != PIGLIT_NO_OPENCL)
+  {
+    piglit_opencl_destroy();
+  }
 
 	piglit_report_result(result);
 	/* UNREACHED */

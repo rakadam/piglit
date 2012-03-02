@@ -1,0 +1,40 @@
+include_directories(
+  ${piglit_SOURCE_DIR}/tests
+  ${piglit_SOURCE_DIR}/tests/util
+)
+link_libraries(
+  piglitutil
+  piglitutilocl
+  OpenCL
+  
+  ${OPENGL_gl_LIBRARY}
+  ${OPENGL_glu_LIBRARY}
+  ${GLUT_glut_LIBRARY}  
+)
+
+macro(add_ocl_file file)
+ADD_CUSTOM_COMMAND(OUTPUT ${file}.c
+  COMMAND oclembed ${piglit_SOURCE_DIR}/tests/ocl/${file}
+  DEPENDS oclembed ${file}
+)
+endmacro(add_ocl_file)
+
+macro(add_ocl_test name c_src_file ocl_src_file)
+add_ocl_file(${ocl_src_file})
+add_executable(${name} ${c_src_file} ${ocl_src_file}.c)
+endmacro(add_ocl_test)
+
+
+add_ocl_test(ocl-context context.c dummy.ocl)
+add_ocl_test(ocl-allocate-global allocate-global.c dummy.ocl)
+add_ocl_test(ocl-transfer-global transfer-global.c dummy.ocl)
+add_ocl_test(ocl-write-global write-global.c write_global.ocl)
+add_ocl_test(ocl-readwrite-global readwrite-global.c readwrite_global.ocl)
+add_ocl_test(ocl-indexed-global indexed-global.c indexed_global.ocl)
+add_ocl_test(ocl-compare compare.c compare.ocl)
+add_ocl_test(ocl-branch branch.c branch.ocl)
+add_ocl_test(ocl-float-arithm float-arithm.c float-arithm.ocl)
+add_ocl_test(ocl-int-arithm int-arithm.c int-arithm.ocl)
+add_ocl_test(ocl-loop loop.c loop.ocl)
+
+

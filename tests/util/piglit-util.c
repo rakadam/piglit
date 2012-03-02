@@ -42,6 +42,8 @@
 #include "piglit-util.h"
 
 
+enum piglit_opencl_mode_ piglit_opencl_mode = PIGLIT_NO_OPENCL;
+
 #if defined(_WIN32)
 
 /* Some versions of MinGW are missing _vscprintf's declaration, although they
