@@ -111,6 +111,7 @@ void piglit_opencl_init()
   cl_uint total_gpu_devices = 0;
   char build_str[100000];
   size_t loglen;
+  int match = 0;
   
   OCL_CHECK(clGetPlatformIDs(0, NULL, &numPlatforms));
   
@@ -126,17 +127,19 @@ void piglit_opencl_init()
     if (strcmp(platform_name, "any") == 0)
     {
       platform = platforms[i];
+      match = 1;
       break;
     }
     
     if (strcmp(platform_name, pbuf) == 0)
     {
       platform = platforms[i];
+      match = 1;
       break;
     }    
   }
   
-  if (!platform)
+  if (!match)
   {
     fprintf(stderr, "Failed to match a platform to: %s\n", platform_name);    
     piglit_report_result(PIGLIT_SKIP);
