@@ -18,7 +18,8 @@ static enum piglit_result run_test()
   
   cpu_buffer = malloc(size);
   
-  cpu_buffer[0] = 1;
+  cpu_buffer[0] = 0;
+  cpu_buffer[1] = 1;
   
   OCL_CHECK(clEnqueueWriteBuffer(opencl_command_queue, buf, CL_TRUE,  0, size, cpu_buffer, 0, NULL, NULL));
   
