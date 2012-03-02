@@ -294,7 +294,7 @@ int main(int argc, char *argv[])
 	int no_x = 0;
 	
 	#ifndef _WIN32
-	if (strcmp(getenv("DISPLAY"), "") == 0)
+	if (!getenv("DISPLAY") || strcmp(getenv("DISPLAY"), "") == 0)
 	{
 		no_x = 1;
 	}
