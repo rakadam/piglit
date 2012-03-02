@@ -123,7 +123,7 @@ void piglit_opencl_init()
     
     OCL_CHECK(clGetPlatformInfo(platforms[i], CL_PLATFORM_VENDOR, sizeof(pbuf)-1, pbuf, NULL));
     
-    if (i == 0 && strcmp(platform_name, "any") == 0)
+    if (strcmp(platform_name, "any") == 0)
     {
       platform = platforms[i];
       break;
