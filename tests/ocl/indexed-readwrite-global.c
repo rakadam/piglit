@@ -18,7 +18,8 @@ static enum piglit_result run_test()
   
   cpu_buffer = malloc(size);
   
-  cpu_buffer[0] = 1;
+  cpu_buffer[0] = 0;
+  cpu_buffer[1] = 42;
   
   OCL_CHECK(clEnqueueWriteBuffer(opencl_command_queue, buf, CL_TRUE,  0, size, cpu_buffer, 0, NULL, NULL));
   
@@ -39,7 +40,8 @@ static enum piglit_result run_test()
   
   OCL_CHECK(clEnqueueReadBuffer(opencl_command_queue, buf, CL_TRUE,  0, size, cpu_buffer, 0, NULL, NULL));
   
-  assert(cpu_buffer[0] == 42);
+  assert(cpu_buffer[0] == 142);
+  assert(cpu_buffer[1] == 42);
   
   OCL_CHECK(clReleaseMemObject(buf));
   

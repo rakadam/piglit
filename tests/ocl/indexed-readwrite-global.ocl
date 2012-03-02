@@ -1,0 +1,4 @@
+kernel void indexed_readwrite_global(global float* p)
+{
+  p[0] = p[1] + 100;
+}
