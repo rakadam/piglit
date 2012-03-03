@@ -29,13 +29,19 @@ opencl_basic = Group()
 add_ocl_test(opencl_basic, 'ocl-float-arithm2')
 
 opencl_compile = Group()
+opencl_float_math_funcs = Group()
+opencl_double_math_funcs = Group()
 
 for filename in os.listdir('./bin'):
 	if filename[0:11] == 'ocl-compile' :
 		add_ocl_test(opencl_compile, filename);
-	if filename[0:8] == 'ocl-func' :
-		add_ocl_test(opencl_basic, filename);
+	if filename[0:14] == 'ocl-func-float' :
+		add_ocl_test(opencl_float_math_funcs, filename);
+	if filename[0:15] == 'ocl-func-double' :
+		add_ocl_test(opencl_double_math_funcs, filename);
 
 profile.tests['opencl_sanity'] = opencl_sanity;
 profile.tests['opencl_compile'] = opencl_compile;
 profile.tests['opencl_basic'] = opencl_basic;
+profile.tests['opencl_float_math_funcs'] = opencl_float_math_funcs;
+profile.tests['opencl_double_math_funcs'] = opencl_double_math_funcs;

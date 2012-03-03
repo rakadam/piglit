@@ -110,6 +110,11 @@ enum piglit_result opencl_run_test()
 		}
 		
 #if Type == float || Type == double
+		if (!isfinite(cpu_output_buffer_ref[i]) && !isfinite(cpu_output_buffer[i]))
+		{
+			continue;
+		}
+		
 		if (diff / mag > 1E-5)
 		{
 			fprintf(stderr, "index: %i expected: %lf got: %lf relative error: %lf\n", i, (double)cpu_output_buffer_ref[i], (double)cpu_output_buffer[i], (double)(diff/mag));
