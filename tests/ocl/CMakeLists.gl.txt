@@ -46,4 +46,5 @@ add_ocl_dual_test(float-arithm)
 add_ocl_dual_test(int-arithm)
 add_ocl_dual_test(loop)
 
+add_ocl_dual_test(float-arithm2)
 

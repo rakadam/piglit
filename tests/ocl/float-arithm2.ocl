@@ -1,0 +1,7 @@
+kernel void float_arithm2(global float* in, global float* out, int size)
+{
+	for (int i = get_global_id(0); i < size; i += get_global_size(0))
+	{
+		out[i] = in[i]*3.1425f + in[i]*in[i]*in[i]*in[i] - 1/(in[i]+0.000001f);
+	}
+}
