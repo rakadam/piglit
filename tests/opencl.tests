@@ -27,6 +27,8 @@ add_ocl_test(opencl_sanity, 'ocl-loop')
 opencl_basic = Group()
 
 add_ocl_test(opencl_basic, 'ocl-float-arithm2')
+add_ocl_test(opencl_basic, 'ocl-global-id')
+add_ocl_test(opencl_basic, 'ocl-global-size')
 
 opencl_compile = Group()
 opencl_float_math_funcs = Group()

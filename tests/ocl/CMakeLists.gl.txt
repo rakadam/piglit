@@ -68,7 +68,8 @@ add_ocl_dual_test(int-arithm)
 add_ocl_dual_test(loop)
 
 add_ocl_dual_test(float-arithm2)
-# add_ocl_dual_test(func-float-sqrt)
+add_ocl_dual_test(global-id)
+add_ocl_dual_test(global-size)
 
 add_ocl_functestdf(asin "asin(x)" "asin(x)")
 add_ocl_functestdf(acos "acos(x)" "acos(x)")

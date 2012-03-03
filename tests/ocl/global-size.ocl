@@ -1,0 +1,6 @@
+kernel void gsz_test(global float* in, global float* out, int size)
+{
+	out[0] = get_global_size(0);
+	out[1] = get_global_size(1);
+	out[2] = get_global_size(2);
+}
