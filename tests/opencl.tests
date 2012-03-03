@@ -5,7 +5,7 @@ from framework.core import *
 from framework.exectest import *
 
 def add_ocl_test(group, name):
-  group[name] = PlainExecTest([name, '-auto'])
+	group[name] = PlainExecTest([name, '-auto'])
 
 profile = TestProfile()
 
@@ -24,5 +24,11 @@ add_ocl_test(opencl_sanity, 'ocl-float-arithm')
 add_ocl_test(opencl_sanity, 'ocl-int-arithm')
 add_ocl_test(opencl_sanity, 'ocl-loop')
 
+opencl_compile = Group()
+
+for filename in os.listdir('./bin'):
+	if filename[0:11] == 'ocl-compile' :
+		add_ocl_test(opencl_compile, filename);
 
 profile.tests['opencl_sanity'] = opencl_sanity;
+profile.tests['opencl_compile'] = opencl_compile;
