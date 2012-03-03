@@ -36,3 +36,4 @@ for filename in os.listdir('./bin'):
 
 profile.tests['opencl_sanity'] = opencl_sanity;
 profile.tests['opencl_compile'] = opencl_compile;
+profile.tests['opencl_basic'] = opencl_basic;
