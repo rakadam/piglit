@@ -291,44 +291,21 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	int no_x = 0;
-	
-	#ifndef _WIN32
-	if (!getenv("DISPLAY") || strcmp(getenv("DISPLAY"), "") == 0)
-	{
-		no_x = 1;
-	}
-	#endif
-	
-	if (piglit_use_fbo && !no_x) {
+	if (piglit_use_fbo) {
 		if (!piglit_framework_fbo_init())
 			piglit_use_fbo = false;
 	}
 	
-	if (!piglit_use_fbo && !no_x)
+	if (!piglit_use_fbo)
 		piglit_framework_glut_init(argc, argv);
 	
 	piglit_init(argc, argv);
 	
-	if (no_x && piglit_opencl_mode != PIGLIT_PURE_OPENCL)
-	{
-		piglit_report_result(PIGLIT_SKIP);
-		return 0;
-	}
-	
-	if (piglit_use_fbo && piglit_opencl_mode != PIGLIT_PURE_OPENCL) {
+	if (piglit_use_fbo) {
 		result = piglit_display();
 		piglit_framework_fbo_destroy();
-	} else if (piglit_opencl_mode != PIGLIT_PURE_OPENCL) {
-		glutMainLoop();
 	} else {
-		assert(opencl_run_test);
-		result = opencl_run_test();
-	}
-	
-	if (piglit_opencl_mode != PIGLIT_NO_OPENCL)
-	{
-		piglit_opencl_destroy();
+		glutMainLoop();
 	}
 	
 	piglit_report_result(result);

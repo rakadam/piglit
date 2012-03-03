@@ -43,9 +43,12 @@ ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 add_library (piglitutil
 	${UTIL_SOURCES}
+	${UTIL_FRAMEWORK}
 )
 
 add_library (piglitutilocl
+	${UTIL_SOURCES}
+	${UTIL_OCL_FRAMEWORK}
   piglit-util-opencl.c
 )
 

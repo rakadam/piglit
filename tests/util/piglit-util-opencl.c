@@ -5,20 +5,13 @@ int piglit_width = 400;
 int piglit_height = 400;
 int piglit_window_mode = GLUT_RGB;
 
-enum piglit_result
-piglit_display()
-{
-  if (opencl_display)
-  {
-    return opencl_display();
-  }
-  
-  assert(opencl_run_test);
-  
-  return opencl_run_test();
-}
+const char* platform_name;
 
-static void opencl_destroy();
+cl_context opencl_context;
+cl_command_queue opencl_command_queue;
+cl_program opencl_program;
+cl_kernel* opencl_kernels;
+cl_uint opencl_kernels_num;
 
 #define CASE_ERR(ec) case ec: return #ec;
 
@@ -61,7 +54,6 @@ const char * err_string(cl_int error)
    CASE_ERR(CL_OUT_OF_HOST_MEMORY);
    CASE_ERR(CL_OUT_OF_RESOURCES);
    CASE_ERR(CL_SUCCESS);
-
    }
    
    return "Unknown";
@@ -87,14 +79,21 @@ void do_ocl_assert(long long cond, const char* name, int line, const char* file)
 
 void piglit_opencl_init();
 
+void piglit_preinit(int argc, char **argv)
+{
+  piglit_opencl_mode = PIGLIT_PURE_OPENCL;
+	piglit_opencl_preinit(argc, argv);
+}
+
+enum piglit_result piglit_display()
+{
+	return opencl_run_test();
+}
+
 void
 piglit_init(int argc, char **argv)
 {
-  opencl_display = NULL;
-  opencl_run_test = NULL;
-  piglit_opencl_destroy = &opencl_destroy;
   platform_name = "any";
-  piglit_opencl_mode = PIGLIT_PURE_OPENCL;
   piglit_opencl_init();
   piglit_opencl_test_init(argc, argv);
 }
@@ -195,7 +194,7 @@ void piglit_opencl_init()
   
   if (strlen(build_str))
   {
-//    printf("build log: %s\n", build_str);
+		printf("build log: %s\n", build_str);
   }
   
   OCL_CHECK(err);
@@ -204,7 +203,7 @@ void piglit_opencl_init()
   OCL_CHECK(clCreateKernelsInProgram(opencl_program, 10000, opencl_kernels, &opencl_kernels_num));
 }
 
-static void opencl_destroy()
+void piglit_opencl_destroy()
 {
   int i = 0;
   

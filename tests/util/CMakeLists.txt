@@ -14,9 +14,16 @@ set(UTIL_SOURCES
 	piglit-util.c
 	piglit-util-enum.c
 	shader-load.c
-	piglit-framework.c
 	rgb9e5.c
 	)
+
+set(UTIL_FRAMEWORK
+	piglit-framework.c
+)
+
+set(UTIL_OCL_FRAMEWORK
+	piglit-ocl-framework.c
+)
 
 if(OPENGL_egl_LIBRARY)
 	set(UTIL_SOURCES

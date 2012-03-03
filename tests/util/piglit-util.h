@@ -294,13 +294,6 @@ extern void piglit_set_rlimit(unsigned long lim);
 static const GLint PIGLIT_ATTRIB_POS = 0;
 static const GLint PIGLIT_ATTRIB_TEX = 1;
 
-/**
- * Specifies the OpenCL test mode, should be set in piglit_init
- */
-extern enum piglit_opencl_mode_ {PIGLIT_NO_OPENCL, PIGLIT_PURE_OPENCL, PIGLIT_OPENCL_OPENGL} piglit_opencl_mode;
-extern enum piglit_result (*opencl_run_test)();
-extern void (*piglit_opencl_destroy)();
-
 #ifdef __cplusplus
 } /* end extern "C" */
 #endif

@@ -1,5 +1,6 @@
 set(UTIL_SOURCES
 	${UTIL_SOURCES}
+	${UTIL_FRAMEWORK}
 	piglit-shader.c
 	piglit-shader-gles2.c
 	piglit-util-gles.c
