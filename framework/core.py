@@ -630,6 +630,7 @@ Test.ignoreErrors = map(re.compile, [
 	"libGL: Can't open configuration file.*",
 	"----------------.*",
 	".*warnings generated.",
+	".*warning generated.",
 	"driver for.*",
 	"loaded .*",
 	"This may hurt performance.*",
