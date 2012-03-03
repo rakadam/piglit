@@ -33,6 +33,8 @@ opencl_compile = Group()
 for filename in os.listdir('./bin'):
 	if filename[0:11] == 'ocl-compile' :
 		add_ocl_test(opencl_compile, filename);
+	if filename[0:8] == 'ocl-func' :
+		add_ocl_test(opencl_basic, filename);
 
 profile.tests['opencl_sanity'] = opencl_sanity;
 profile.tests['opencl_compile'] = opencl_compile;

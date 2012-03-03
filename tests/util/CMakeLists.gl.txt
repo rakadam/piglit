@@ -56,6 +56,10 @@ add_executable(oclembed
   oclembed.c
 )
 
+add_executable(oclfunctest
+  oclfunctest.c
+)
+
 if(UNIX)
 	target_link_libraries(piglitutil m)
 endif(UNIX)

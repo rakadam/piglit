@@ -32,6 +32,22 @@ add_ocl_compile_test(${name})
 add_ocl_test(${name} ${name}.c ${name}.ocl)
 endmacro(add_ocl_dual_test)
 
+macro(add_ocl_functestf name c_code cl_code)
+ADD_CUSTOM_COMMAND(OUTPUT float-${name}.c
+  COMMAND oclfunctest float-${name} float \"${c_code}\" \"${cl_code}\"
+  DEPENDS oclfunctest
+)
+add_executable(ocl-func-float-${name} float-${name}.c)
+endmacro(add_ocl_functestf)
+
+macro(add_ocl_functestd name c_code cl_code)
+ADD_CUSTOM_COMMAND(OUTPUT double-${name}.c
+  COMMAND oclfunctest double-${name} double \"${c_code}\" \"${cl_code}\"
+  DEPENDS oclfunctest
+)
+add_executable(ocl-func-double-${name} double-${name}.c)
+endmacro(add_ocl_functestd)
+
 add_ocl_test(context context.c dummy.ocl)
 add_ocl_test(allocate-global allocate-global.c dummy.ocl)
 add_ocl_test(transfer-global transfer-global.c dummy.ocl)
@@ -47,4 +63,8 @@ add_ocl_dual_test(int-arithm)
 add_ocl_dual_test(loop)
 
 add_ocl_dual_test(float-arithm2)
+add_ocl_dual_test(func-float-sqrt)
 
+add_ocl_functestf(sin "sin(x)" "sin(x)")
+add_ocl_functestd(sin "sin(x)" "sin(x)")
+add_ocl_functestf(sin-native "sin(x)" "native_sin(x)")
