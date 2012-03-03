@@ -24,6 +24,10 @@ add_ocl_test(opencl_sanity, 'ocl-float-arithm')
 add_ocl_test(opencl_sanity, 'ocl-int-arithm')
 add_ocl_test(opencl_sanity, 'ocl-loop')
 
+opencl_basic = Group()
+
+add_ocl_test(opencl_basic, 'ocl-float-arithm2')
+
 opencl_compile = Group()
 
 for filename in os.listdir('./bin'):
