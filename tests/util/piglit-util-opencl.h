@@ -5,23 +5,25 @@
 
 void piglit_opencl_test_init(int argc, char **argv);
 
-//set to defaults
-#ifndef OPENCL_UTIL_NODEF
-#define OPENCL_UTIL_NODEF
-#endif
 
 extern const char* opencl_kernel_file;
 
-extern enum piglit_result (*opencl_display)();
-extern enum piglit_result (*opencl_run_test)();
+/**
+ * Specifies the OpenCL test mode, should be set in piglit_init
+ */
+extern enum piglit_opencl_mode_ {PIGLIT_NO_OPENCL, PIGLIT_PURE_OPENCL, PIGLIT_OPENCL_OPENGL} piglit_opencl_mode;
+enum piglit_result opencl_run_test();
+void piglit_opencl_destroy();
+void piglit_opencl_preinit(int argc, char **argv);
+void piglit_preinit(int argc, char **argv);
+enum piglit_result opencl_run_test();
 
-OPENCL_UTIL_NODEF const char* platform_name;
-
-OPENCL_UTIL_NODEF cl_context opencl_context;
-OPENCL_UTIL_NODEF cl_command_queue opencl_command_queue;
-OPENCL_UTIL_NODEF cl_program opencl_program;
-OPENCL_UTIL_NODEF cl_kernel* opencl_kernels;
-OPENCL_UTIL_NODEF cl_uint opencl_kernels_num;
+extern const char* platform_name;
+extern cl_context opencl_context;
+extern cl_command_queue opencl_command_queue;
+extern cl_program opencl_program;
+extern cl_kernel* opencl_kernels;
+extern cl_uint opencl_kernels_num;
 
 void do_ocl_assert(long long cond, const char* name, int line, const char* file);
 void ocl_check(cl_int err, int line, const char* file);
