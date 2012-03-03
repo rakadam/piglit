@@ -41,5 +41,5 @@ add_ocl_test(float-arithm float-arithm.c float-arithm.ocl)
 add_ocl_test(int-arithm int-arithm.c int-arithm.ocl)
 add_ocl_test(loop loop.c loop.ocl)
 
-add_ocl_compile_test(readwrite-global);
+add_ocl_compile_test(readwrite-global)
 
