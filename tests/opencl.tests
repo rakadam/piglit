@@ -42,8 +42,8 @@ for filename in os.listdir('./bin'):
 	if filename[0:15] == 'ocl-func-double' :
 		add_ocl_test(opencl_double_math_funcs, filename);
 
-profile.tests['opencl_sanity'] = opencl_sanity;
-profile.tests['opencl_compile'] = opencl_compile;
-profile.tests['opencl_basic'] = opencl_basic;
+profile.tests['opencl_1_sanity'] = opencl_sanity;
+profile.tests['opencl_0_compile'] = opencl_compile;
+profile.tests['opencl_2_basic'] = opencl_basic;
 profile.tests['opencl_float_math_funcs'] = opencl_float_math_funcs;
 profile.tests['opencl_double_math_funcs'] = opencl_double_math_funcs;
